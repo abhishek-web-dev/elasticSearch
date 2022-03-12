@@ -5,10 +5,10 @@ const { httpCode } = require('../../constants/http');
 const service = require('./service');
 const validator = require('./validator');
 
-const getStory = async (request, response) => {
-  validateRequest(request, validator.getStory);
+const getDocuments = async (request, response) => {
+  //validateRequest(request, validator.getStory);
 
-  let userStory = await service.getStory({ ...request.params });
+  let userStory = await service.getStory({});
 
   // successResponse(request, response, httpCode.OK_REQUEST, responseObj);
   successResponse(response, httpCode.OK_REQUEST, userStory);
@@ -16,5 +16,5 @@ const getStory = async (request, response) => {
 
 
 module.exports = {
-  getStory
+  getDocuments
 };

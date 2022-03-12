@@ -22,6 +22,7 @@ router.get(`/health`, (req, res) => res.send('Ok'));
 */
 
 router.use(`/search`, require('../app/modules/search/route'));
+router.use(`/bucket`, require('../app/modules/bucket/route'));
 
 
 module.exports = router;

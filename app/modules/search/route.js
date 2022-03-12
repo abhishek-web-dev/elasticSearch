@@ -6,7 +6,7 @@ const controller = require('./controller');
 const asyncExecute = require('../../../lib/middlewares/asyncExecute');
 
 
-router.get('/:userId', asyncExecute(controller.getStory));
+router.get('/docs', asyncExecute(controller.getDocuments));
 /**
  * @apiGroup STORY 
  * @apiVersion  1.0.0
