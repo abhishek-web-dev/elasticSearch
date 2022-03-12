@@ -2,9 +2,10 @@
 const express = require('express')
 const router = express.Router()
 
-// feature modules
+// feature modules lib/middlewares/isAuthenticated
+const { httpJwtAuthentication } = require('../lib/middlewares/httpJwtAuthentication')
 
-
+// router.use(`/`, require('./healthCheck'));
 //server health check API
 router.get(`/health`, (req, res) => res.send('Ok'));
 /**
@@ -19,6 +20,8 @@ router.get(`/health`, (req, res) => res.send('Ok'));
       "Ok"
   }
 */
+
+router.use(`/search`, require('../app/modules/search/route'));
 
 
 module.exports = router;

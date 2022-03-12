@@ -30,7 +30,7 @@ module.exports = (app) => {
     app.use(express.urlencoded({ extended: false }));//parse req
     app.use(express.json({ limit: "50mb" }));//parse req
     app.use(require('../lib/middlewares/httpJwtAuthentication').httpJwtAuthentication);//authenticate middleware
-    app.use(`/`, require('../app/routes'));// import all routes
+    app.use(`/`, require('./routes'));// import all routes
     app.use(require('../lib/middlewares/routeNotFound'));
     app.use(require('../lib/middlewares/errorHandler'));//global error handler
 }

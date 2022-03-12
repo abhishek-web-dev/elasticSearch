@@ -12,7 +12,7 @@ const { httpCode, httpMessage } = require('./http');
 const {
   ERROR_CODES: STORY_COMPONENT_ERROR_CODES,
   ERROR_INFO: STORY_COMPONENT_ERROR_INFO,
-} = require('../modules/story/error');
+} = require('../modules/search/error');
 
 const ERROR_CODES = {
   ROUTE_NOT_FOUND: 1000,

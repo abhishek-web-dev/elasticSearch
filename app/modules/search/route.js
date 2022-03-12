@@ -2,8 +2,8 @@
 const router = require('express').Router();
 
 // feature modules
-const controller = require('../modules/story/controller');
-const asyncExecute = require('../../lib/middlewares/asyncExecute');
+const controller = require('./controller');
+const asyncExecute = require('../../../lib/middlewares/asyncExecute');
 
 
 router.get('/:userId', asyncExecute(controller.getStory));
