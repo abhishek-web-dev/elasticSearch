@@ -33,7 +33,7 @@ To get the Node server running locally:
 
 - [Express.js](https://github.com/expressjs/express) - The server for handling and routing HTTP requests
   <!-- - [Json web token](https://github.com/auth0/node-jsonwebtoken) - For generating JWT's used by authentication -->
-  <!-- - [Mongoose](https://github.com/Automattic/mongoose) - For modeling and mapping MongoDB data to javascript
+  <!-- - [Mongoose](https://github.com/Automattic/mongoose) - For modeling and mapping MongoDB data to javascript -->
 - [Winston](https://github.com/winstonjs/winston) - For logging to console file and adding transports
 - [Redis](https://github.com/NodeRedis/node_redis) - For caching, storing session -->
 - [DotEnv](https://github.com/motdotla/dotenv) - Loading variables form .env to PROCESS_ENV
