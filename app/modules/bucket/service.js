@@ -1,8 +1,5 @@
 // dependency library
-const axios = require('axios');
-const AWS = require('aws-sdk');
-// const reader = require('any-text');
-
+const { Client } = require('@elastic/elasticsearch')
 
 // feature modules
 // const DAL = require("./DAL");
@@ -23,8 +20,17 @@ let getNotifications = async (body) => {
   console.log('documentName  : ', documentName, docAwsUrl)
   const { text } = await utils.getDocumentText(docAwsUrl);
 
-  console.log('text 2 : ', text)
+  const client = new Client({ node: config.elasticUrl })
 
+  await client.index({
+    index: 'docs',
+    document: {
+      name: documentName,
+      docText: text
+    }
+  })
+
+  // console.log('text 2 : ', text)
 
   return 1;
 };

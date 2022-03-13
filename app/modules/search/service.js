@@ -1,8 +1,5 @@
 // dependency library
-const axios = require('axios');
-const AWS = require('aws-sdk');
-// const reader = require('any-text');
-const textract = require('textract');
+const { Client } = require('@elastic/elasticsearch')
 
 // feature modules
 const DAL = require("./DAL");
@@ -12,40 +9,50 @@ const config = require('./../../../lib/config');
 
 
 
-let getStory = async ({ }) => {
-  const s3 = new AWS.S3({
-    accessKeyId: config.awsS3id,
-    secretAccessKey: config.awsS3Secret
-  });
-  let textDate;
-  // Call the function to get list of items from S3.
-  let result = await s3.listObjectsV2({ Bucket: 'ak-documents' }).promise();
+let getDocuments = async ({ searchText }) => {
+  console.log('searchText ', searchText)
 
-  console.log('result ', result);
+  const client = new Client({ node: config.elasticUrl })
 
-  const params = { Bucket: 'ak-documents', Key: result.Contents[0].Key }
-  const response = await s3.getObject(params).promise() // await the promise
-  // console.log('response ', response)
-  // const text = await reader.getText(`path-to-file`);
-  let url = `https://ak-documents.s3.ap-south-1.amazonaws.com/${result.Contents[0].Key}`;
-  console.log('url ', url)
-  textract.fromUrl(url, function (error, text) {
-    textDate = text;
-    console.log('text ', text)
+  let result = await client.search({
+    index: 'docs',
+    query: {
+      "bool": {
+        "must": [],
+        "filter": [],
+        "should": [
+          {
+            "match_phrase_prefix": {
+              "name": {
+                "query": searchText
+              }
+            }
+          },
+          {
+            "match_phrase_prefix": {
+              "docText": {
+                "query": searchText
+              }
+            }
+          }
+        ],
+        "must_not": []
+      }
+    }
   })
-  const fileContent = response.Body.toString('utf8'); // can also do 'base64' here if desired
-  // console.log('fileContent ', fileContent);
+  console.log('result', result)
+  return result.hits.hits.map((d) => {
+    return {
+      name: d._source.name,
+      docUrl: `https://doc-1-bucket.s3.ap-south-1.amazonaws.com/${d._source.name}`
+    };
+  });
 
-  return {
-    result,
-    response,
-    textDate
-  }
 };
 
 
 module.exports = {
-  getStory
+  getDocuments
 };
 
 
