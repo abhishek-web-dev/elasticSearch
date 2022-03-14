@@ -10,7 +10,7 @@ const utils = require('./utils');
 
 
 let getNotifications = async (body) => {
-
+ body = JSON.parse(body.Message);
   console.log('s3 body ', body)
   // if (body.Message.Records.length)
   //   return 1;
