@@ -11,7 +11,8 @@ const utils = require('./utils');
 
 let getNotifications = async (body) => {
 
-  if (!body.Message.Records.length)
+  console.log('s3 body ', body)
+  if (body.Message.Records.length)
     return 1;
 
   const documentName = body.Message.Records[0].s3.object.key;
