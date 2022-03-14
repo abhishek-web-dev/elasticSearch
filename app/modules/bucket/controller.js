@@ -8,7 +8,7 @@ const service = require('./service');
 const getNotifications = async (request, response) => {
   //validateRequest(request, validator.getStory);
   console.log('1 ', request.headers);
-  // console.log('2 ', JSON.stringify(request.body))
+  console.log('2 ', request.body)
 
   if (request.headers['x-amz-sns-message-type'] === 'Notification')
     await service.getNotifications(request.body);
