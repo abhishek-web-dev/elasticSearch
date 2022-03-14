@@ -6,12 +6,11 @@ const service = require('./service');
 const validator = require('./validator');
 
 const getDocuments = async (request, response) => {
-  //validateRequest(request, validator.getStory);
+  validateRequest(request, validator.getDocuments);
 
-  let data = await service.getDocuments(request.query);
+  const result = await service.getDocuments(request.query);
 
-  // successResponse(request, response, httpCode.OK_REQUEST, responseObj);
-  successResponse(response, httpCode.OK_REQUEST, data);
+  successResponse(response, httpCode.OK_REQUEST, result);
 };
 
 

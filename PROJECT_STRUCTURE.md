@@ -21,7 +21,7 @@ root/
 |    |    | 
 |    |--- modules/
 |    |    |
-|    |    |--- appStore/
+|    |    |--- search/
 |    |    |    |
 |    |    |    |--- controller.js
 |    |    |    |
@@ -37,18 +37,9 @@ root/
 |    |    |    |
 |    |    |    |--- validator.js
 |    |    |    |
-|    |    |--- user/
+|    |    |--- bucket/
 |    |    |
-|    |    |--- index.js
 |    |    | 
-|    |--- routes/
-|    |    | 
-|    |    |--- appStore.js
-|    |    |
-|    |    |--- user.js
-|    |    | 
-|    |    |--- index.js
-|    |    |
 |--- bin/
 |    |
 |    |--- app.js
@@ -57,6 +48,8 @@ root/
 |    |
 |    |--- mongoConnection.js
 |    | 
+|    |--- routes.js
+|    |  
 |--- lib/
 |    |
 |    |--- config/

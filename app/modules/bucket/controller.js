@@ -13,7 +13,6 @@ const getNotifications = async (request, response) => {
   if (request.headers['x-amz-sns-message-type'] === 'Notification')
     await service.getNotifications(request.body);
 
-  // successResponse(request, response, httpCode.OK_REQUEST, responseObj);
   successResponse(response, httpCode.OK_REQUEST, {
     SubscriptionArn: request.headers['x-amz-sns-topic-arn']
   });

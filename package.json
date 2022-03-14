@@ -1,11 +1,11 @@
 {
-  "name": "node-express-starting-project",
+  "name": "elastic-search",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/app.js",
-    "docs": "apidoc -c ./lib/apidoc.json -i app/routes -o lib/apidoc/"
+    "docs": "apidoc -c ./lib/apidoc.json -i app/modules -o lib/apidoc/"
   },
   "keywords": [],
   "author": "",

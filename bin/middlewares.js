@@ -15,16 +15,16 @@ module.exports = (app) => {
     }
 
     // allow specific IP to access this API
-    const corseOption = config.environment === 'development' ? {} : {
-        origin: function (origin, callback) {
-            if ((config.allowedHosts ? config.allowedHosts.split('::::') : []).indexOf(origin) !== -1) {
-                callback(null, true)
-            } else {
-                callback('Not allowed by CORS', false);
-            }
-        }
-    };
-    app.use(cors(corseOption));
+    // const corseOption = config.environment === 'development' ? {} : {
+    //     origin: function (origin, callback) {
+    //         if ((config.allowedHosts ? config.allowedHosts.split('::::') : []).indexOf(origin) !== -1) {
+    //             callback(null, true)
+    //         } else {
+    //             callback('Not allowed by CORS', false);
+    //         }
+    //     }
+    // };
+    app.use(cors());
     app.use(helmet());
     app.use(require('morgan')('dev'));//for request logs 
     app.use(function (req, res, next) {
