@@ -12,10 +12,10 @@ const utils = require('./utils');
 let getNotifications = async (body) => {
 
   console.log('s3 body ', body)
-  if (body.Message.Records.length)
-    return 1;
+  // if (body.Message.Records.length)
+  //   return 1;
 
-  const documentName = body.Message.Records[0].s3.object.key;
+  const documentName = body.Records[0].s3.object.key;
   const docAwsUrl = `https://doc-1-bucket.s3.ap-south-1.amazonaws.com/${documentName}`;
 
   console.log('documentName  : ', documentName, docAwsUrl)
